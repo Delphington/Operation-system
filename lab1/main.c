@@ -4,24 +4,18 @@
 #include <regex.h>
 #include <stdlib.h>
 
-
-// Константы для флагов
+int mycat_process_file(const char *file_name, int flags);
+void mycat_process_stdin(int flags);
+int mycat_main(int argc, char *argv[]);
+int mygrep_search_in_file(const char *pattern, const char *file_name, int multiple_files);
+void mygrep_search_in_stdin(const char *pattern);
+int mygrep_main(int argc, char *argv[]);
 enum {
     NO_FLAGS = 0,  // без флагов
     N_FLAG = 1,    // флаг -n
     B_FLAG = 2,    // флаг -b
     E_FLAG = 4     // флаг -E
 };
-
-int mycat_process_file(const char *file_name, int flags);
-void mycat_process_stdin(int flags);
-int mycat_main(int argc, char *argv[]);
-
-
-int mygrep_search_in_file(const char *pattern, const char *file_name, int multiple_files);
-void mygrep_search_in_stdin(const char *pattern);
-int mygrep_main(int argc, char *argv[]);
-
 // Вспомогательные функции для устранения дублирования
 static void mycat_print_line(char *line, ssize_t read, int flags, int *line_number) {
 	int is_empty = (line[0] == '\n');
