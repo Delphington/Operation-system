@@ -49,7 +49,7 @@
 2.  **Поиск с использованием `mycat` и pipe:**
 
     ```bash
-    ./mycat test.txt | ./mygrep "lines"
+    ./mycat TestFile.txt | ./mygrep "lines"
     ```
 
 3.  **Поиск с использованием `ls` и pipe:**
