@@ -10,6 +10,8 @@
 #include <grp.h>
 #include <time.h>
 #include <limits.h>
+#include <getopt.h>
+
 
 enum ListFlags
 {
