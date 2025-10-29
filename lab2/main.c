@@ -250,11 +250,19 @@ static void print_entry(struct dirent *entry)
             cleanup_and_exit(ERR_GET_GROUP);
         }
 
-        // Количество ссылок, пользователь, группа, размер
-        printf("%lu %s %s %lu ", file_info.st_nlink, 
-               pwd_file ? pwd_file->pw_name : "unknown",
-               grp_file ? grp_file->gr_name : "unknown", 
-               file_info.st_size);
+        // Количество ссылок, пользователь/uid, группа/gid, размер
+        printf("%lu ", file_info.st_nlink);
+        if (pwd_file) {
+            printf("%-8s ", pwd_file->pw_name);
+        } else {
+            printf("%-8lu ", (unsigned long)file_info.st_uid);
+        }
+        if (grp_file) {
+            printf("%-8s ", grp_file->gr_name);
+        } else {
+            printf("%-8lu ", (unsigned long)file_info.st_gid);
+        }
+        printf("%lu ", (unsigned long)file_info.st_size);
 
         // Время модификации
         char *time_str = ctime(&file_info.st_mtime);
