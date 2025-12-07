@@ -1,0 +1,2 @@
+g++ lab8.cpp -lpthread && ./a.out
+
