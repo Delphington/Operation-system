@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wextra -pedantic
 TARGET = main
-SRC = main.c
+SRC = main.c utils.c pipe_demo.c fifo_demo.c
 
 .PHONY: all build clean run_pipe run_fifo
 
