@@ -1,15 +1,12 @@
 CC = gcc
-CFLAGS = -std=c11 -O2 -Wall -Wextra -pedantic
-LDFLAGS = -lrt
-TARGET = ipc
-SRC = main.c
+TARGETS = producer consumer
 
-all: $(TARGET)
+all: $(TARGETS)
 
-$(TARGET): $(SRC)
-	$(CC) $(CFLAGS) -o $(TARGET) $(SRC) $(LDFLAGS)
+producer: producer.c
+	$(CC) -o producer producer.c
 
+consumer: consumer.c
+	$(CC) -o consumer consumer.c
 clean:
-	rm -f $(TARGET)
-
-.PHONY: all clean
+	rm -f $(TARGETS)
